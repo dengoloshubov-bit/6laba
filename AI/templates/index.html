@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Классификация ирисов</title>
+    <style>
+        body { font-family: sans-serif; margin: 2em; }
+        form { border: 1px solid #ccc; padding: 1em; width: 300px; }
+        .result { margin-top: 1em; padding: 1em; background-color: #e8f5e9; border: 1px solid #4caf50; }
+    </style>
+</head>
+<body>
+    <h1>Определение вида ириса</h1>
+    <p>Введите параметры цветка:</p>
+
+    <form action="/predict" method="post">
+        <label for="sepal_length">Длина чашелистика (см):</label><br>
+        <input type="number" step="0.1" id="sepal_length" name="sepal_length" value="5.1" required><br><br>
+
+        <label for="sepal_width">Ширина чашелистика (см):</label><br>
+        <input type="number" step="0.1" id="sepal_width" name="sepal_width" value="3.5" required><br><br>
+
+        <label for="petal_length">Длина лепестка (см):</label><br>
+        <input type="number" step="0.1" id="petal_length" name="petal_length" value="1.4" required><br><br>
+
+        <label for="petal_width">Ширина лепестка (см):</label><br>
+        <input type="number" step="0.1" id="petal_width" name="petal_width" value="0.2" required><br><br>
+
+        <input type="submit" value="Отправить">
+    </form>
+
+    <!-- Блок для отображения результата, если он есть -->
+    {% if result %}
+    <div class="result">
+        <strong>Результат:</strong> {{ result }}
+    </div>
+    {% endif %}
+</body>
+</html>
